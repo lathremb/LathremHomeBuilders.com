@@ -1,0 +1,18 @@
+# Store text with LF in the repo; check out native on Windows.
+# Without this, editing on Windows rewrites whole files as CRLF and every
+# diff looks like the entire file changed.
+* text=auto
+
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+
+# Never touch binaries
+*.jpg  binary
+*.jpeg binary
+*.png  binary
+*.webp binary
+*.gif  binary
+*.ico  binary

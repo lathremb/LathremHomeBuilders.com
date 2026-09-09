@@ -1,0 +1,24 @@
+# Vercel CLI state (project link, build output). Never commit this —
+# .vercel/project.json ties the folder to a specific Vercel project.
+.vercel/
+
+# Secrets. Only .env.example belongs in the repo.
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# OS / editor cruft
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Local scratch
+*.log
