@@ -219,7 +219,7 @@
       note.textContent = msg;
     };
 
-    var PHONE_FALLBACK = " Please call (520) 875-0456 and we'll pick it up from there.";
+    var PHONE_FALLBACK = " Please call (520) 975-0456 and we'll pick it up from there.";
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -248,7 +248,7 @@
           loadedAt = Date.now();
           say("form__ok",
             "Thank you — your inquiry is with us. We'll be in touch within two business days. " +
-            "If it's urgent, call (520) 875-0456.");
+            "If it's urgent, call (520) 975-0456.");
         })
         .catch(function (err) {
           var detail = err && err.message ? " " + err.message : "";
