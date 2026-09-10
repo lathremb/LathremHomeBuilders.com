@@ -158,10 +158,14 @@ p:last-child { margin-bottom: 0; }
 .hdr--solid::before { display: none; }
 
 /* ---------- logo ----------
-   The supplied mark, white background removed. Two variants are stacked and
-   cross-faded: the original taupe wordmark for solid white headers, and a
-   cream-knockout version for the transparent header over the dark hero, where
-   the taupe would otherwise disappear into the photograph. */
+   The supplied mark, white background removed, rebuilt as a linear lockup:
+   building above, LATHREM HOMEBUILDERS on one line. Two variants are stacked
+   and cross-faded — the original taupe for solid white headers, and a
+   cream-knockout for the transparent header over the dark hero, where the
+   taupe would otherwise disappear into the photograph.
+
+   This lockup is 5.1:1, so its height is stepped down at narrower widths to
+   keep it clear of the navigation. */
 .logo {
   position: relative; z-index: 2;
   display: block;
@@ -169,7 +173,7 @@ p:last-child { margin-bottom: 0; }
 }
 .logo__img {
   display: block;
-  height: 46px; width: auto;
+  height: 56px; width: auto;
   transition: opacity .45s var(--ease);
 }
 .logo__img--dark {
@@ -428,6 +432,35 @@ p:last-child { margin-bottom: 0; }
 .svc__i p { font-size: 14.5px; line-height: 1.8; color: var(--ink-soft); }
 
 /* =========================================================
+   AWARDS / RECOGNITION
+   ========================================================= */
+.awards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: clamp(30px, 4.5vw, 72px);
+  border-top: 1px solid var(--line);
+}
+.award { padding: 24px 0 22px; border-bottom: 1px solid var(--line); }
+.award__n {
+  font-family: var(--serif);
+  font-size: clamp(19px, 1.75vw, 23px);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.award__b {
+  margin-top: 8px;
+  font-size: 10.5px; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--bronze);
+}
+.award__note { margin-top: 7px; font-size: 13.5px; line-height: 1.65; color: var(--muted); }
+
+@media (max-width: 780px) {
+  .awards { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
    QUOTE / TESTIMONIAL
    ========================================================= */
 .quote { max-width: 880px; margin: 0 auto; text-align: center; }
@@ -578,7 +611,7 @@ p:last-child { margin-bottom: 0; }
 .ftr { background: var(--char); color: rgba(255,255,255,.66); padding: clamp(58px, 7vw, 92px) 0 34px; font-size: 14px; }
 .ftr a:hover { color: #fff; }
 .ftr__top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.1fr; gap: clamp(28px, 4vw, 64px); padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,.12); }
-.ftr__logo .logo__img { height: 42px; }
+.ftr__logo .logo__img { height: 50px; }
 .ftr__blurb { margin-top: 22px; max-width: 34ch; font-size: 14px; line-height: 1.8; }
 .ftr h4 { font-size: 10.5px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: #fff; margin-bottom: 20px; }
 .ftr ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
@@ -618,6 +651,7 @@ p:last-child { margin-bottom: 0; }
    RESPONSIVE
    ========================================================= */
 @media (max-width: 1080px) {
+  .logo__img { height: 48px; }
   .feature { grid-template-columns: 1fr; }
   .feature__media img { aspect-ratio: 16 / 10; }
   .ftr__top { grid-template-columns: 1fr 1fr; row-gap: 44px; }
@@ -662,7 +696,7 @@ p:last-child { margin-bottom: 0; }
   .nav a, .hdr.is-stuck .nav a { color: var(--ink); font-size: 13px; letter-spacing: .3em; }
   .nav__tel { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 26px; }
   .hdr { padding-top: 18px; padding-bottom: 18px; }
-  .logo__img { height: 38px; }
+  .logo__img { height: 40px; }
 
   .form__row { grid-template-columns: 1fr; }
   .deflist div { grid-template-columns: 1fr; gap: 4px; }
