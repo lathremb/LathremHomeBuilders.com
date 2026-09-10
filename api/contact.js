@@ -1,7 +1,7 @@
 /* =========================================================
    POST /api/contact
    Receives the contact-form JSON, validates it, and sends the
-   enquiry on by email via Resend.
+   inquiry on by email via Resend.
 
    The destination address lives ONLY in Vercel's environment
    variables — it is never sent to the browser, so there is
@@ -9,7 +9,7 @@
 
    Required environment variables (Vercel > Project > Settings > Environment Variables):
      RESEND_API_KEY   re_xxxxxxxx        from resend.com/api-keys
-     CONTACT_EMAIL    where enquiries should land
+     CONTACT_EMAIL    where inquiries should land
    Optional:
      CONTACT_FROM     defaults to "Lathrem Website <onboarding@resend.dev>".
                       Resend's shared sender only delivers to the address that
@@ -145,7 +145,7 @@ module.exports = async function handler(req, res) {
     '<div style="background:#f8f6f2;padding:28px">' +
     '<div style="max-width:620px;margin:0 auto;background:#fff;border:1px solid #e4dfd6;padding:30px 32px">' +
     '<p style="margin:0 0 4px;color:#a8874e;font:500 11px/1.5 Arial,sans-serif;letter-spacing:.24em;text-transform:uppercase">' +
-    "New website enquiry</p>" +
+    "New website inquiry</p>" +
     '<h1 style="margin:0 0 24px;color:#1b1916;font:400 26px/1.25 Georgia,serif">' +
     escapeHtml(data.name) +
     "</h1>" +
@@ -186,7 +186,7 @@ module.exports = async function handler(req, res) {
         from: from,
         to: [to],
         reply_to: data.email,
-        subject: "Website enquiry — " + data.name,
+        subject: "Website inquiry — " + data.name,
         html: html,
         text: text
       })

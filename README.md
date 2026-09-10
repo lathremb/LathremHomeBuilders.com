@@ -12,7 +12,7 @@ contact form. No build step, no framework, no dependencies.
 index.html          Landing page — hero, statement, featured project, portfolio grid
 portfolio.html      Full portfolio, five projects, filterable, lightbox
 about.html          Company, principles, credentials, services
-contact.html        Enquiry form, direct details, typical investment
+contact.html        Inquiry form, direct details, typical investment
 api/contact.js      Serverless function — validates and relays the form by email
 assets/css/site.css All styling
 assets/js/site.js   Header, mobile menu, scroll reveal, lightbox, filter, form
@@ -42,7 +42,7 @@ exposed in the page source where scrapers could harvest it.
 | Variable | Required | Purpose |
 |---|---|---|
 | `RESEND_API_KEY` | yes | API key from [resend.com/api-keys](https://resend.com/api-keys) |
-| `CONTACT_EMAIL` | yes | Inbox that receives enquiries |
+| `CONTACT_EMAIL` | yes | Inbox that receives inquiries |
 | `CONTACT_FROM` | no | Sender identity. Defaults to `Lathrem Website <onboarding@resend.dev>` |
 
 Without the required two, `/api/contact` returns 503 and the form tells the

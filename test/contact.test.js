@@ -79,7 +79,7 @@ function check(name, cond, extra) {
   check('  bearer auth header', sent && sent.opts.headers.Authorization === 'Bearer re_test');
   check('  to = CONTACT_EMAIL', sent && sent.payload.to[0] === 'owner@example.com', sent && JSON.stringify(sent.payload.to));
   check('  reply_to = visitor', sent && sent.payload.reply_to === 'dana@example.com');
-  check('  subject names sender', sent && sent.payload.subject === 'Website enquiry — Dana Reyes', sent && sent.payload.subject);
+  check('  subject names sender', sent && sent.payload.subject === 'Website inquiry — Dana Reyes', sent && sent.payload.subject);
   check('  phone hyphens preserved', sent && sent.payload.text.includes('520-555-0100'), sent && (sent.payload.text.match(/Phone: .*/)||[])[0]);
   check('  budget en-dash preserved', sent && sent.payload.text.includes('$150,000 – $400,000'));
   check('  message newlines kept', sent && sent.payload.text.includes('Two bedrooms.'));
