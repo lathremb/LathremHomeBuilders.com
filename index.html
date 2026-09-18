@@ -8,8 +8,75 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://lathrem-home-builders-com.vercel.app/">
 <link rel="icon" href="assets/img/favicon.png" type="image/png">
+
+<!-- LCP: discover the hero before the stylesheet resolves -->
+<link rel="preload" as="image" type="image/webp" fetchpriority="high"
+      imagesrcset="assets/img/hero-480.webp 480w,
+                   assets/img/hero-800.webp 800w,
+                   assets/img/hero-1200.webp 1200w,
+                   assets/img/hero-1600.webp 1600w,
+                   assets/img/hero-2200.webp 2200w"
+      imagesizes="100vw">
+
 <link rel="stylesheet" href="assets/css/site.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "@id": "https://lathrem-home-builders-com.vercel.app/#business",
+  "name": "Lathrem Homebuilders, LLC",
+  "alternateName": "Lathrem Homebuilders",
+  "description": "Licensed Arizona general contractor building custom homes, remodels, additions and outdoor living throughout Tucson and Pima County.",
+  "url": "https://lathrem-home-builders-com.vercel.app/",
+  "logo": "https://lathrem-home-builders-com.vercel.app/assets/img/logo-c.png",
+  "image": "https://lathrem-home-builders-com.vercel.app/assets/img/hero-2200.webp",
+  "telephone": "+1-520-975-0456",
+  "founder": { "@type": "Person", "name": "Charles Lathrem" },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4032 W Moore Rd",
+    "addressLocality": "Tucson",
+    "addressRegion": "AZ",
+    "postalCode": "85742",
+    "addressCountry": "US"
+  },
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "Arizona ROC license",
+    "value": "324057"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5",
+    "reviewCount": "19"
+  },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Pima County, Arizona" },
+    { "@type": "City", "name": "Tucson, Arizona" },
+    { "@type": "City", "name": "Oro Valley, Arizona" },
+    { "@type": "City", "name": "Marana, Arizona" },
+    { "@type": "Place", "name": "Catalina Foothills, Arizona" },
+    { "@type": "Place", "name": "Casas Adobes, Arizona" },
+    { "@type": "Place", "name": "Tortolita, Arizona" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Construction services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Homes" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Remodels & Additions" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Outdoor Living & Pools" } }
+    ]
+  },
+  "sameAs": [
+    "https://www.houzz.com/professionals/home-builders/lathrem-homebuilders-llc-pfvwus-pf~218754289"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -33,7 +100,21 @@
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero__media">
-    <img src="assets/img/hero-2200.jpg" width="2200" height="1469" alt="A custom desert contemporary home at twilight, its stacked-stone piers and glass walls glowing against the Sonoran foothills">
+    <picture>
+      <source type="image/webp"
+              srcset="assets/img/hero-480.webp 480w,
+                      assets/img/hero-800.webp 800w,
+                      assets/img/hero-1200.webp 1200w,
+                      assets/img/hero-1600.webp 1600w,
+                      assets/img/hero-2200.webp 2200w"
+              sizes="100vw">
+      <img src="assets/img/hero-2200.jpg"
+           srcset="assets/img/hero-800.jpg 800w, assets/img/hero-2200.jpg 2200w"
+           sizes="100vw"
+           width="2200" height="1469"
+           loading="eager" fetchpriority="high" decoding="async"
+           alt="A custom desert contemporary home at twilight, its stacked-stone piers and glass walls glowing against the Sonoran foothills">
+    </picture>
   </div>
   <div class="hero__scrim"></div>
 
@@ -299,8 +380,9 @@
         <h4>Areas served</h4>
         <ul>
           <li>Tucson</li>
-          <li>Catalina Foothills</li>
-          <li>Oro Valley &amp; Marana</li>
+          <li><a href="custom-home-builder-catalina-foothills.html">Catalina Foothills</a></li>
+          <li><a href="custom-home-builder-oro-valley.html">Oro Valley</a></li>
+          <li><a href="custom-home-builder-marana.html">Marana</a></li>
           <li>Casas Adobes &amp; Tortolita</li>
         </ul>
       </div>

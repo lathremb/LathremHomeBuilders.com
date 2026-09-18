@@ -248,6 +248,7 @@ p:last-child { margin-bottom: 0; }
   background: #14161c;
 }
 .hero__media { position: absolute; inset: 0; }
+.hero__media picture { display: block; width: 100%; height: 100%; }
 .hero__media img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: center 58%;
