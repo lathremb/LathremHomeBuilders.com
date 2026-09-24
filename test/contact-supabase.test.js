@@ -2,7 +2,10 @@
    The function reads its env at module load, so this file sets the
    Supabase vars BEFORE requiring it and runs in its own process. */
 
-const path = require('path');
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { dirname, join } from 'node:path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 process.env.RESEND_API_KEY = 're_test';
 process.env.CONTACT_EMAIL = 'owner@example.com';
@@ -40,7 +43,7 @@ global.fetch = async (url, opts) => {
   throw new Error('unexpected fetch to ' + u);
 };
 
-const handler = require(path.join(__dirname, '..', 'api', 'contact.js'));
+const handler = (await import(pathToFileURL(join(__dirname, '..', 'api', 'contact.js')).href)).default;
 
 function mockRes() {
   const r = { statusCode: null, body: null, headers: {} };

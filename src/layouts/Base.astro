@@ -1,0 +1,60 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path for <link rel="canonical">, e.g. "/about.html". "/" for home. */
+  canonical: string;
+  /** Transparent header, for the landing page hero only. */
+  transparentHeader?: boolean;
+  /** JSON-LD object, serialised into a script tag. */
+  schema?: Record<string, unknown> | null;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  transparentHeader = false,
+  schema = null,
+} = Astro.props;
+
+const canonicalUrl = new URL(canonical, Astro.site).href;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <slot name="head" />
+
+  {schema && (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  )}
+</head>
+<body>
+  <Header transparent={transparentHeader} current={canonical} />
+
+  <slot />
+
+  <Footer />
+
+  <script src="/site.js" is:inline defer></script>
+</body>
+</html>

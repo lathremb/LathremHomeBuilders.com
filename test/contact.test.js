@@ -1,5 +1,8 @@
-const path = require('path');
-const FN = path.join(__dirname, "..", "api", "contact.js");
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { dirname, join } from 'node:path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const FN = join(__dirname, "..", "api", "contact.js");
 
 let sent = null;
 let resendStatus = 200;
@@ -14,7 +17,7 @@ global.fetch = async (url, opts) => {
   };
 };
 
-const handler = require(FN);
+const handler = (await import(pathToFileURL(FN).href)).default;
 
 function mockRes() {
   const r = { statusCode: null, body: null, headers: {} };

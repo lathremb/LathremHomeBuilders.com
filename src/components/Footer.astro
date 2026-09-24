@@ -1,0 +1,60 @@
+---
+import { site, nav } from '../data/site.js';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__top">
+      <div>
+        <a class="logo ftr__logo" href="/">
+          <img
+            class="logo__img"
+            src="/assets/img/logo-c-light.png"
+            width="748" height="146"
+            alt={site.name}
+          />
+        </a>
+        <p class="ftr__blurb">
+          A licensed Arizona general contractor building custom homes, remodels
+          and outdoor living throughout the Tucson region.
+        </p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          {nav.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4>Areas served</h4>
+        <ul>
+          <li>Tucson</li>
+          <li><a href="/custom-home-builder-catalina-foothills.html">Catalina Foothills</a></li>
+          <li><a href="/custom-home-builder-oro-valley.html">Oro Valley</a></li>
+          <li><a href="/custom-home-builder-marana.html">Marana</a></li>
+          <li>Casas Adobes &amp; Tortolita</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href={site.phoneHref}>{site.phone}</a></li>
+          <li>{site.address.street}<br />{site.address.city}, {site.address.region} {site.address.postalCode}</li>
+          <li>AZ ROC #{site.licenseNumber}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ftr__bot">
+      <span>&copy; {year} {site.legalName}. All rights reserved.</span>
+      <span>Licensed &middot; Bonded &middot; Insured</span>
+    </div>
+  </div>
+</footer>

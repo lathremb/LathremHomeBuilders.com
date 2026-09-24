@@ -8,30 +8,63 @@ contact form. No build step, no framework, no dependencies.
 
 ## Layout
 
+Astro, static output. No client framework: the only JavaScript shipped is the
+same ~6KB of vanilla `site.js` the hand-written site used.
+
 ```
-index.html          Landing page — hero, statement, featured project, portfolio grid
-portfolio.html      Full portfolio, five projects, filterable, lightbox
-about.html          Company, principles, credentials, services
-contact.html        Inquiry form, direct details, typical investment
-api/contact.js      Serverless function — validates and relays the form by email
-assets/css/site.css All styling
-assets/js/site.js   Header, mobile menu, scroll reveal, lightbox, filter, form
-assets/img/         88 web-optimised images (large + 800px variants)
-test/contact.test.js Tests for the contact function
-vercel.json         Cache and security headers
+src/pages/           One .astro file per route, output as /name.html
+src/layouts/Base     <head>, header, footer - every page goes through it
+src/components/      Header, Footer, Photo, Cta
+src/data/site.js     Phone, address, licence, nav. Single source of truth.
+src/data/*.json      Testimonials and portfolio tiles as data, not markup
+src/assets/img/      43 photographs, optimised at build time
+src/styles/site.css  All styling
+public/              Files served as-is: hero set, logos, favicon, site.js,
+                     robots.txt, sitemap.xml
+api/contact.js       Vercel Function. Validates, stores, relays the form.
+scripts/             Post-build prune (see below)
+test/                Tests for the contact function
 ```
+
+### Why a port at all
+
+Astro's usual selling point is stripping framework JavaScript, and there was
+none to strip. Two things did justify it:
+
+- **Images.** 89 fixed-size JPEGs became 43 sources that build into AVIF and
+  WebP at the widths each layout actually uses. A phone loading the portfolio
+  went from ~3.5MB to ~560KB.
+- **Duplication.** The header and footer were copy-pasted into 8 files. Adding
+  a nav item meant a regex across all of them.
+
+### A note on build size
+
+`dist/` is around 25MB, larger than the old `assets/img`. That is expected and
+not a regression: it stores every format and width, and a visitor downloads
+exactly one per image. Per-page transfer is what improved.
+
+The JPEG copies (~11MB) only serve browsers supporting neither AVIF nor WebP.
+
+### The prune step
+
+`npm run build` runs `scripts/prune-assets.mjs` afterwards. `Photo.astro` globs
+the whole photo directory for ergonomics, and Vite emits every matched asset
+whether a page renders it or not - about 13MB of untouched originals nothing
+links to. The script deletes files from `_astro` whose names appear nowhere in
+the built output, so it cannot remove something live.
 
 ## Running locally
 
-Any static file server works, but `/api/contact` only runs under Vercel:
-
 ```bash
-npx vercel dev
+npm install
+npm run dev      # http://localhost:4338
 ```
 
-Or serve the folder with anything (`npx serve`, Python's `http.server`) if you
-only need the pages — the form will report a send failure and point visitors at
-the phone number, which is the intended fallback.
+Port 4338 is deliberate: LT Studio already uses Astro's default 4321 and
+M1 Off Road uses 4330.
+
+`/api/contact` does not run under `astro dev`; it is a Vercel Function. Use
+`npx vercel dev` to exercise it locally, or rely on the tests.
 
 ## Environment variables
 

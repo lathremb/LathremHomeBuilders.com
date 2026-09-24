@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { site } from '../data/site.js';
+import testimonials from '../data/testimonials.json';
+---
+
+<Base
+  title="Testimonials | Lathrem Homebuilders"
+  description="All 19 client and trade reviews of Lathrem Homebuilders, rated 5.0 out of 5 on Houzz. Custom homes, remodels and outdoor living across Tucson and Southern Arizona."
+  canonical="/testimonials.html"
+>
+  <section class="pagehead">
+    <div class="wrap">
+      <p class="eyebrow">Testimonials</p>
+      <h1 class="display h-xl">What clients say.</h1>
+      <p class="lede" style="max-width:58ch;margin-top:26px">
+        Rated {site.rating.value} out of 5 across {site.rating.count} reviews.
+        Homeowners, interior designers and the trades who work alongside us, in
+        their own words.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="tmn__stars rv" aria-label={`Rated ${site.rating.value} out of 5`}>
+        &#9733; &#9733; &#9733; &#9733; &#9733;
+      </div>
+
+      <ol class="tmn">
+        {testimonials.map((t) => (
+          <li class="tmn__item rv">
+            <blockquote class="tmn__q">{t.quote}</blockquote>
+            <p class="tmn__by">
+              {t.name}
+              {t.role && <span class="tmn__role">{t.role}</span>}
+            </p>
+          </li>
+        ))}
+      </ol>
+
+      <p class="small rv tmn__src">
+        Published on <a href={site.houzz} target="_blank" rel="noopener">Houzz</a>,
+        where each review can be read in full.
+      </p>
+    </div>
+  </section>
+
+  <Cta
+    heading="Build with us."
+    body="Tell us about the site, the scope and the timeline. We will tell you honestly whether we are the right builder for it."
+    image="tr-ramada-dusk.jpg"
+  />
+</Base>

@@ -1,0 +1,40 @@
+---
+import Photo from './Photo.astro';
+import { site } from '../data/site.js';
+
+interface Props {
+  heading: string;
+  body: string;
+  image: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  heading,
+  body,
+  image,
+  primaryHref = '/contact.html',
+  primaryLabel = 'Start a conversation',
+  secondaryHref,
+  secondaryLabel,
+} = Astro.props;
+---
+
+<section class="cta">
+  <div class="cta__media">
+    <Photo src={image} alt="" widths={[800, 1600]} sizes="100vw" />
+  </div>
+  <div class="cta__inner rv">
+    <h2 class="display h-lg">{heading}</h2>
+    <p>{body}</p>
+    <div class="cta__btns">
+      <a class="btn btn--onDark" href={primaryHref}>{primaryLabel}</a>
+      {secondaryHref
+        ? <a class="btn btn--outline" href={secondaryHref}>{secondaryLabel}</a>
+        : <a class="btn btn--outline" href={site.phoneHref}>{site.phone}</a>}
+    </div>
+  </div>
+</section>
