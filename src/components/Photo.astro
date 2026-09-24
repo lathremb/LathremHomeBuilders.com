@@ -1,0 +1,65 @@
+---
+/* Looks a photograph up by filename and hands it to astro:assets, which emits
+   AVIF and WebP at the widths the layout actually uses, with a JPEG fallback.
+   Every <img> gets intrinsic width/height so nothing shifts as it loads.
+
+   Referencing by string keeps the call sites readable; the glob is eager so
+   a filename typo fails the build rather than 404ing in production. */
+import { Picture } from 'astro:assets';
+
+/* Lazy, not eager: an eager glob emits every photograph into the build even
+   when a page renders one of them. Awaiting only what is used keeps the
+   output to the images that are actually referenced. */
+const photos = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/img/*.{jpg,jpeg,png}'
+);
+
+interface Props {
+  /** Filename only, e.g. "dc-kitchen.jpg". */
+  src: string;
+  alt: string;
+  /** Rendered widths to generate. */
+  widths?: number[];
+  sizes?: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+}
+
+const {
+  src,
+  alt,
+  widths = [400, 800, 1200],
+  sizes = '(max-width: 620px) 100vw, (max-width: 1080px) 50vw, 33vw',
+  class: className,
+  loading = 'lazy',
+  fetchpriority = 'auto',
+} = Astro.props;
+
+const key = `../assets/img/${src}`;
+const loader = photos[key];
+
+if (!loader) {
+  throw new Error(
+    `Photo not found: ${src}\nAvailable: ${Object.keys(photos)
+      .map((k) => k.split('/').pop())
+      .join(', ')}`
+  );
+}
+
+const image = (await loader()).default;
+/* Never upscale: cap the generated widths at the source's own width. */
+const capped = [...new Set(widths.filter((w) => w <= image.width).concat(Math.min(image.width, Math.max(...widths))))].sort((a, b) => a - b);
+---
+
+<Picture
+  src={image}
+  formats={['avif', 'webp']}
+  fallbackFormat="jpeg"
+  widths={capped}
+  sizes={sizes}
+  alt={alt}
+  class={className}
+  loading={loading}
+  fetchpriority={fetchpriority}
+/>

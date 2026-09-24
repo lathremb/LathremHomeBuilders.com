@@ -1,0 +1,42 @@
+---
+import { site, nav } from '../data/site.js';
+
+interface Props {
+  /** Transparent over the hero photograph; solid everywhere else. */
+  transparent?: boolean;
+  /** Pathname of the current page, to mark the active nav item. */
+  current?: string;
+}
+
+const { transparent = false, current = '' } = Astro.props;
+---
+
+<header class:list={['hdr', { 'hdr--solid': !transparent }]}>
+  <a class="logo" href="/" aria-label={`${site.name} home`}>
+    <img
+      class="logo__img logo__img--light"
+      src="/assets/img/logo-c-light.png"
+      width="748" height="146"
+      alt={site.name}
+    />
+    <img
+      class="logo__img logo__img--dark"
+      src="/assets/img/logo-c.png"
+      width="748" height="146"
+      alt="" aria-hidden="true"
+    />
+  </a>
+
+  <button class="burger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="nav">
+    {nav.map((item) => (
+      <a href={item.href} class:list={{ 'is-active': item.href === current }}>
+        {item.label}
+      </a>
+    ))}
+    <a class="nav__tel" href={site.phoneHref}>{site.phone.replace(') ', ') ')}</a>
+  </nav>
+</header>

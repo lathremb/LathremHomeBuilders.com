@@ -1,0 +1,233 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HomeAndConstructionBusiness",
+      "@id": "https://lathrem-home-builders-com.vercel.app/#business",
+      "name": "Lathrem Homebuilders, LLC",
+      "url": "https://lathrem-home-builders-com.vercel.app/",
+      "logo": "https://lathrem-home-builders-com.vercel.app/assets/img/logo-c.png",
+      "image": "https://lathrem-home-builders-com.vercel.app/assets/img/hero2-2400.webp",
+      "telephone": "+1-520-975-0456",
+      "founder": {
+        "@type": "Person",
+        "name": "Charles Lathrem"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4032 W Moore Rd",
+        "addressLocality": "Tucson",
+        "addressRegion": "AZ",
+        "postalCode": "85742",
+        "addressCountry": "US"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "Arizona ROC license",
+        "value": "324057"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "reviewCount": "19"
+      },
+      "sameAs": [
+        "https://www.houzz.com/professionals/home-builders/lathrem-homebuilders-llc-pfvwus-pf~218754289"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-marana.html#webpage",
+      "url": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-marana.html",
+      "name": "Custom Home Builder in Marana, AZ | Lathrem Homebuilders",
+      "description": "Licensed custom home builder in Marana, Arizona. Dove Mountain and Tortolita foothills homes, remodels and outdoor living, from an office on Moore Road.",
+      "inLanguage": "en-US",
+      "about": {
+        "@id": "https://lathrem-home-builders-com.vercel.app/#business"
+      },
+      "primaryImageOfPage": "https://lathrem-home-builders-com.vercel.app/assets/img/tr-courtyard.jpg",
+      "breadcrumb": {
+        "@id": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-marana.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-marana.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lathrem-home-builders-com.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Custom home builder in Marana",
+          "item": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-marana.html"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-marana.html#service",
+      "name": "Custom home building in Marana, Arizona",
+      "serviceType": "Custom home construction, remodels, additions and outdoor living",
+      "provider": {
+        "@id": "https://lathrem-home-builders-com.vercel.app/#business"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Marana",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Pima County, Arizona"
+        }
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services in Marana",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Homes"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Remodels & Additions"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Outdoor Living & Pools"
+            }
+          }
+        ]
+      }
+    }
+  ]
+};
+---
+
+<Base
+  title="Custom Home Builder in Marana, AZ | Lathrem Homebuilders"
+  description="Licensed custom home builder in Marana, Arizona. Dove Mountain and Tortolita foothills homes, remodels and outdoor living, from an office on Moore Road. AZ ROC #324057, 5.0 across 19 reviews."
+  canonical="/custom-home-builder-marana.html"
+  schema={schema}
+>
+  <!-- ================= PAGE HEAD ================= -->
+  <section class="pagehead">
+    <div class="wrap">
+      <p class="eyebrow">Areas served</p>
+      <h1 class="display h-xl">Custom home builder in Marana</h1>
+      <p class="lede" style="max-width:58ch;margin-top:26px">Custom homes, remodels and outdoor living from Dove Mountain to the Tortolita foothills, built by a contractor whose office is already on Moore Road.</p>
+    </div>
+  </section>
+
+  <!-- ================= LOCAL CONTEXT ================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split split--top">
+        <div class="rv">
+          <Photo src="tr-courtyard.jpg" alt="Courtyard pool and covered ramada framed by mountain views" />
+        </div>
+        <div class="rv rv-d1">
+          <p class="eyebrow">Building here</p>
+          <h2 class="display h-md" style="margin-bottom:24px">This is the home market.</h2>
+          <p class="lede">Our office sits at 4032 W Moore Rd. Marana is not a territory we expanded into. It is the ground we work from, and it shows up in the small things: a subcontractor who can be on site in twenty minutes, a walkthrough that happens the same afternoon you call, an owner who drives past the job on the way home.</p>
+          <p class="lede">Marana also builds differently from the Foothills. The Town runs its own building department, the lots are larger and flatter, and the constraint is rarely slope. It is wind, sun and distance: long uninterrupted view corridors toward the Tortolitas and the Catalinas, and very little natural shade to work with.</p>
+          <p class="lede">That makes orientation the most valuable decision on the whole project. Where the glass faces, where the covered outdoor rooms sit, and how the house handles a west exposure in June will matter more to how it lives than any finish selection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHAT IT TAKES ================= -->
+  <section class="section section--warm">
+    <div class="wrap">
+      <div class="grid-head rv">
+        <div>
+          <p class="eyebrow">What a Marana build asks for</p>
+          <h2 class="display h-lg">Three things worth getting right.</h2>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc__i rv">
+          <div class="svc__n">01</div>
+          <h3>Orientation and shade</h3>
+          <p>Open desert gives you the views and none of the shelter. Deep overhangs, ramadas and a plan turned correctly against the west sun do more for comfort and running cost here than any mechanical system.</p>
+        </div>
+        <div class="svc__i rv rv-d1">
+          <div class="svc__n">02</div>
+          <h3>Energy performance</h3>
+          <p>We have been building to energy-efficiency standards since well before it was fashionable, including an EPA Energy Star award for the most energy-efficient custom home in Southern Arizona. On an exposed Marana lot that work pays for itself.</p>
+        </div>
+        <div class="svc__i rv rv-d2">
+          <div class="svc__n">03</div>
+          <h3>Outdoor rooms that get used</h3>
+          <p>Bigger lots invite bigger exterior programs: ramadas, outdoor kitchens, fire features, pools and spas. We build them to the same standard as the interior, because in this climate they get used more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FACTS ================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split split--top">
+        <div class="rv">
+          <p class="eyebrow">The practical details</p>
+          <h2 class="display h-md" style="margin-bottom:28px">Working in Marana.</h2>
+          <p class="lede">We are a licensed Arizona general contractor based in the 85742, building throughout Marana, Tortolita and the northwest side of Pima County.</p>
+        </div>
+        <div class="rv rv-d1">
+          <dl class="deflist">
+            <div><dt>Jurisdiction</dt><dd>Town of Marana. Its own building department and permitting</dd></div>
+            <div><dt>Areas</dt><dd>Dove Mountain, Tortolita foothills, Continental Ranch, Gladden Farms, Tangerine corridor</dd></div>
+            <div><dt>Terrain</dt><dd>Lower bajada and open desert floor, long view corridors, little natural shade</dd></div>
+            <div><dt>We build</dt><dd>Custom homes, whole-home remodels, additions, guest houses, pools and outdoor living</dd></div>
+            <div><dt>Office</dt><dd>4032 W Moore Rd, Tucson, AZ 85742</dd></div>
+            <div><dt>Telephone</dt><dd><a href="tel:+15209750456">(520) 975-0456</a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIAL ================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="quote rv">
+        <hr class="rule rule--center">
+        <blockquote>&ldquo;Charles built an outstanding home for us and the process was trouble free &hellip; The home won United States EPA Energy Star award from the City of Tucson for building Southern Arizona's Most Energy Efficient Custom Home.&rdquo;</blockquote>
+        <cite>Mark Ragel &middot; Pool contractor &amp; homeowner</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="cta">
+    <div class="cta__media"><Photo src="rg-fire-pool.jpg" alt="" /></div>
+    <div class="cta__inner rv">
+      <h2 class="display h-lg">Building in Marana?</h2>
+      <p>We are a few minutes away. Tell us about the lot and we will come look at it with you.</p>
+      <div class="cta__btns">
+        <a class="btn btn--onDark" href="/contact.html">Start a conversation</a>
+        <a class="btn btn--outline" href="tel:+15209750456">(520) 975-0456</a>
+      </div>
+    </div>
+  </section>
+</Base>

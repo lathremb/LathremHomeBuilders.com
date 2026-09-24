@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { Picture, getImage } from 'astro:assets';
+import tiles from '../data/portfolio.json';
+
+const photos = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/img/*.{jpg,jpeg,png}'
+);
+
+/* Each tile needs two things: a responsive thumbnail, and a single large URL
+   for the lightbox to open. getImage gives us the second without shipping the
+   untouched original. */
+const gallery = await Promise.all(
+  tiles.map(async (tile) => {
+    const loader = photos[`../assets/img/${tile.src}`];
+    if (!loader) throw new Error(`Portfolio photo not found: ${tile.src}`);
+    const image = (await loader()).default;
+
+    const full = await getImage({
+      src: image,
+      format: 'webp',
+      width: Math.min(image.width, 1600),
+      quality: 82,
+    });
+
+    return { image, full: full.src, alt: tile.alt };
+  })
+);
+---
+
+<Base
+  title="Portfolio | Lathrem Homebuilders"
+  description="Custom homes, remodels, interiors and outdoor living built by Lathrem Homebuilders across Tucson, Oro Valley, Marana and the Catalina Foothills."
+  canonical="/portfolio.html"
+>
+  <section class="pagehead">
+    <div class="wrap">
+      <p class="eyebrow">Portfolio</p>
+      <h1 class="display h-xl">Homes that reward a second look.</h1>
+      <p class="lede" style="max-width:58ch;margin-top:26px">
+        Custom homes, remodels, interiors and outdoor rooms built across
+        Southern Arizona. Select any photograph to view it full size.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="masonry">
+        {gallery.map((item) => (
+          <a class="tile" data-lb={item.full} data-lb-cap={item.alt} href={item.full}>
+            <Picture
+              src={item.image}
+              formats={['avif', 'webp']}
+              fallbackFormat="jpeg"
+              widths={[400, 800]}
+              sizes="(max-width: 620px) 100vw, (max-width: 900px) 50vw, 33vw"
+              alt={item.alt}
+              loading="lazy"
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Cta
+    heading="Have a site in mind?"
+    body="Bring us the lot, the plans or just the idea. We will walk it with you and give you a straight answer on scope, budget and schedule."
+    image="tr-ramada-dusk.jpg"
+  />
+
+  <div class="lb" role="dialog" aria-modal="true" aria-label="Photograph viewer">
+    <button class="lb__x" aria-label="Close">&times;</button>
+    <button class="lb__prev" aria-label="Previous">&#8249;</button>
+    <button class="lb__next" aria-label="Next">&#8250;</button>
+    <div>
+      <img class="lb__img" src="" alt="" />
+      <p class="lb__cap"></p>
+    </div>
+  </div>
+</Base>
