@@ -44,6 +44,8 @@ exposed in the page source where scrapers could harvest it.
 | `RESEND_API_KEY` | yes | API key from [resend.com/api-keys](https://resend.com/api-keys) |
 | `CONTACT_EMAIL` | yes | Inbox that receives inquiries |
 | `CONTACT_FROM` | no | Sender identity. Defaults to `Lathrem Website <onboarding@resend.dev>` |
+| `SUPABASE_URL` | no | `https://yguoqmqmoizzfiaqragi.supabase.co` |
+| `SUPABASE_SERVICE_ROLE_KEY` | no | Service role key. Server-side only - it bypasses row level security |
 
 Without the required two, `/api/contact` returns 503 and the form tells the
 visitor to call instead. It fails politely, but no email is sent.
@@ -55,14 +57,37 @@ to something like `Website <website@lathremhomebuilders.com>`.
 
 Environment variables apply at build time — after changing one, redeploy.
 
+## Where submissions go
+
+Every valid submission is written to the `contact_submissions` table in the
+`client-Lathrem-Homebuilders` Supabase project **before** the notification
+email is attempted, then the row is updated with whether that email actually
+sent. So a lead survives a Resend outage, a bounced address, or a message lost
+to a spam folder — check the table, not just the inbox.
+
+The visitor sees success if **either** the row was stored or the email went
+out; they only see an error if both failed.
+
+The table has row level security enabled with no policies and no grants to
+`anon` or `authenticated`, so nothing but the service role can read or write
+it. It is not reachable from the browser.
+
+To read leads: Supabase dashboard → Table Editor → `contact_submissions`.
+A row with `email_sent = false` is a lead that never reached the inbox.
+
 ## Tests
 
 ```bash
 node test/contact.test.js
+node test/contact-supabase.test.js
 ```
 
-21 tests covering validation, both bot traps, HTML and header injection,
-length caps, and confirming the API key never leaks into an error response.
+41 tests. The first file covers validation, both bot traps, HTML and header
+injection, length caps, and confirms the API key never leaks into an error
+response. The second covers the storage path: that the row is written before
+the email, that a lead is still captured when the email fails, that the
+service key never reaches the client, and that bot traps and validation
+failures store nothing.
 
 ## Deploying
 

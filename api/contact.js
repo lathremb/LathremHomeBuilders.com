@@ -19,6 +19,88 @@
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 
+/* The Vercel/Supabase integration injects these under a few different names
+   depending on how it was provisioned, so accept the common spellings. */
+const SUPABASE_URL =
+  process.env.SUPABASE_URL ||
+  process.env.NEXT_PUBLIC_SUPABASE_URL ||
+  process.env.POSTGRES_URL_NON_POOLING_SUPABASE_URL ||
+  "";
+const SUPABASE_KEY =
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.SUPABASE_SECRET_KEY ||
+  process.env.SUPABASE_SERVICE_KEY ||
+  "";
+const SUBMISSIONS_TABLE = "contact_submissions";
+const SUPABASE_BASE =
+  SUPABASE_URL.charAt(SUPABASE_URL.length - 1) === "/"
+    ? SUPABASE_URL.slice(0, -1)
+    : SUPABASE_URL;
+
+/* Store the lead. Returns the new row id, or null if storage is not
+   configured or the write failed - either way the caller still emails. */
+async function storeSubmission(data) {
+  if (!SUPABASE_URL || !SUPABASE_KEY) return null;
+  try {
+    const r = await fetch(
+      SUPABASE_BASE + "/rest/v1/" + SUBMISSIONS_TABLE,
+      {
+        method: "POST",
+        headers: {
+          apikey: SUPABASE_KEY,
+          Authorization: "Bearer " + SUPABASE_KEY,
+          "Content-Type": "application/json",
+          Prefer: "return=representation"
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone || null,
+          location: data.location || null,
+          project_type: data.project || null,
+          budget: data.budget || null,
+          message: data.message || null
+        })
+      }
+    );
+    if (!r.ok) {
+      console.error("contact: supabase insert " + r.status + " " + (await r.text()));
+      return null;
+    }
+    const rows = await r.json();
+    return rows && rows[0] ? rows[0].id : null;
+  } catch (err) {
+    console.error("contact: supabase insert threw " + (err && err.message));
+    return null;
+  }
+}
+
+/* Record whether the notification email actually went out. Best effort. */
+async function markEmailResult(id, sent, errorText) {
+  if (!id || !SUPABASE_URL || !SUPABASE_KEY) return;
+  try {
+    await fetch(
+      SUPABASE_BASE +
+        "/rest/v1/" + SUBMISSIONS_TABLE + "?id=eq." + encodeURIComponent(id),
+      {
+        method: "PATCH",
+        headers: {
+          apikey: SUPABASE_KEY,
+          Authorization: "Bearer " + SUPABASE_KEY,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal"
+        },
+        body: JSON.stringify({
+          email_sent: !!sent,
+          email_error: sent ? null : (errorText || "").slice(0, 500) || null
+        })
+      }
+    );
+  } catch (err) {
+    console.error("contact: supabase patch threw " + (err && err.message));
+  }
+}
+
 /* Cap every field so an oversized POST can't be used to stuff the inbox. */
 const LIMITS = {
   name: 120,
@@ -174,7 +256,13 @@ module.exports = async function handler(req, res) {
     .concat(data.message ? ["", LABELS.message, "-----------------", data.message] : [])
     .join("\n");
 
-  /* --- send ------------------------------------------------------ */
+  /* --- store, then send ------------------------------------------
+     Order matters: the row is written first so the lead survives an
+     email failure. The visitor only sees an error if BOTH fail. */
+  const submissionId = await storeSubmission(data);
+
+  let emailed = false;
+  let emailError = "";
   try {
     const resend = await fetch(RESEND_ENDPOINT, {
       method: "POST",
@@ -192,15 +280,22 @@ module.exports = async function handler(req, res) {
       })
     });
 
-    if (!resend.ok) {
-      const detail = await resend.text();
-      console.error("contact: resend returned " + resend.status + " " + detail);
-      return res.status(502).json({ error: "We couldn't send that just now." });
+    if (resend.ok) {
+      emailed = true;
+    } else {
+      emailError = "resend " + resend.status + " " + (await resend.text());
+      console.error("contact: " + emailError);
     }
-
-    return res.status(200).json({ ok: true });
   } catch (err) {
-    console.error("contact: " + (err && err.message));
-    return res.status(502).json({ error: "We couldn't send that just now." });
+    emailError = (err && err.message) || "send threw";
+    console.error("contact: " + emailError);
   }
+
+  await markEmailResult(submissionId, emailed, emailError);
+
+  /* Captured OR delivered is a success from the visitor's point of view. */
+  if (emailed || submissionId) {
+    return res.status(200).json({ ok: true });
+  }
+  return res.status(502).json({ error: "We couldn't send that just now." });
 };
