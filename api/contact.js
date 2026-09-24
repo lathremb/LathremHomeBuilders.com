@@ -28,16 +28,49 @@ const SUPABASE_URL =
   process.env.NEXT_PUBLIC_SUPABASE_URL ||
   "https://yguoqmqmoizzfiaqragi.supabase.co";
 
-/* The key IS a secret and has to come from the environment. Vercel projects
-   name it differently depending on how Supabase was provisioned, so check the
-   standard spellings plus the name actually in use on this project. */
-const SUPABASE_KEY =
-  process.env.SUPABASE_SERVICE_ROLE_KEY ||
-  process.env.SUPABASE_SECRET_KEY ||
-  process.env.SUPABASE_SERVICE_KEY ||
-  process.env.client_lathremhomebuiler_supabase ||
-  process.env.CLIENT_LATHREMHOMEBUILER_SUPABASE ||
-  "";
+/* The key IS a secret and must come from the environment. Its NAME varies by
+   how Supabase was provisioned and has already been wrong twice, so fall back
+   to matching on the value's format, which is unambiguous: a Supabase secret
+   key is either "sb_secret_..." or a JWT whose role claim is service_role.
+   Neither the publishable key nor the anon key can match, so this cannot
+   accidentally pick a key that lacks write access. */
+function isServiceKey(v) {
+  if (typeof v !== "string" || !v) return false;
+  if (v.indexOf("sb_secret_") === 0) return true;
+  if (v.indexOf("eyJ") === 0) {
+    try {
+      const payload = JSON.parse(
+        Buffer.from(v.split(".")[1], "base64").toString("utf8")
+      );
+      return payload && payload.role === "service_role";
+    } catch (e) {
+      return false;
+    }
+  }
+  return false;
+}
+
+function findServiceKey() {
+  // A deliberately-named variable is trusted as-is, whatever its format -
+  // never second-guess explicit configuration.
+  const named = [
+    process.env.SUPABASE_SERVICE_ROLE_KEY,
+    process.env.SUPABASE_SECRET_KEY,
+    process.env.SUPABASE_SERVICE_KEY
+  ];
+  for (const v of named) if (v) return v;
+
+  // Only the blind scan needs the format check, so it cannot grab a
+  // publishable or anon key by mistake.
+
+  // Otherwise find one by format, whatever it happens to be called.
+  for (const k of Object.keys(process.env)) {
+    if (isServiceKey(process.env[k])) return process.env[k];
+  }
+  return "";
+}
+
+const SUPABASE_KEY = findServiceKey();
 
 const SUBMISSIONS_TABLE = "contact_submissions";
 const SUPABASE_BASE =
