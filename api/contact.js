@@ -19,18 +19,26 @@
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 
-/* The Vercel/Supabase integration injects these under a few different names
-   depending on how it was provisioned, so accept the common spellings. */
+/* The project URL is not a secret - it ships in every browser-side Supabase
+   app - so default to it. That removes one variable from the list of things
+   that can be misconfigured; an env var still overrides it if the project
+   ever moves. */
 const SUPABASE_URL =
   process.env.SUPABASE_URL ||
   process.env.NEXT_PUBLIC_SUPABASE_URL ||
-  process.env.POSTGRES_URL_NON_POOLING_SUPABASE_URL ||
-  "";
+  "https://yguoqmqmoizzfiaqragi.supabase.co";
+
+/* The key IS a secret and has to come from the environment. Vercel projects
+   name it differently depending on how Supabase was provisioned, so check the
+   standard spellings plus the name actually in use on this project. */
 const SUPABASE_KEY =
   process.env.SUPABASE_SERVICE_ROLE_KEY ||
   process.env.SUPABASE_SECRET_KEY ||
   process.env.SUPABASE_SERVICE_KEY ||
+  process.env.client_lathremhomebuiler_supabase ||
+  process.env.CLIENT_LATHREMHOMEBUILER_SUPABASE ||
   "";
+
 const SUBMISSIONS_TABLE = "contact_submissions";
 const SUPABASE_BASE =
   SUPABASE_URL.charAt(SUPABASE_URL.length - 1) === "/"
@@ -40,7 +48,10 @@ const SUPABASE_BASE =
 /* Store the lead. Returns the new row id, or null if storage is not
    configured or the write failed - either way the caller still emails. */
 async function storeSubmission(data) {
-  if (!SUPABASE_URL || !SUPABASE_KEY) return null;
+  if (!SUPABASE_URL || !SUPABASE_KEY) {
+    console.error("contact: supabase key not found in env - lead emailed only, not stored");
+    return null;
+  }
   try {
     const r = await fetch(
       SUPABASE_BASE + "/rest/v1/" + SUBMISSIONS_TABLE,
