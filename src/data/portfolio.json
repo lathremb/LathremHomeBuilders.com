@@ -1,170 +1,414 @@
 [
   {
-    "src": "ext-dusk-saguaro.jpg",
-    "alt": "Curved contemporary home glowing at dusk behind a saguaro"
-  },
-  {
-    "src": "kitchen-mountain-view.jpg",
-    "alt": "Kitchen island beneath a full-width window onto the mountains"
-  },
-  {
-    "src": "pool-fire-bowl.jpg",
-    "alt": "Fire bowl burning at the edge of the pool terrace"
-  },
-  {
-    "src": "hall-red-art.jpg",
-    "alt": "Hall hung with red canvases opening to the courtyard"
-  },
-  {
-    "src": "ext-oldworld-estate.jpg",
-    "alt": "Old-world estate at sunset beneath a rock outcrop"
-  },
-  {
-    "src": "bath-tub-view.jpg",
-    "alt": "Soaking tub set into a window wall"
-  },
-  {
-    "src": "pool-ramada-dusk.jpg",
-    "alt": "Covered ramada and pool at dusk"
-  },
-  {
-    "src": "living-great-room.jpg",
-    "alt": "Great room with deep sofas and a timber ceiling"
-  },
-  {
-    "src": "ext-stone-curve.jpg",
-    "alt": "Stacked-stone piers and a curved stucco wall at the entrance"
-  },
-  {
-    "src": "dining-chandelier.jpg",
-    "alt": "Dining room beneath a wrought-iron chandelier"
-  },
-  {
-    "src": "pool-mountain-dusk.jpg",
-    "alt": "Pool terrace and lit great room looking out to the mountains"
-  },
-  {
-    "src": "entry-carved-city.jpg",
-    "alt": "Carved timber doors opening to the city lights"
-  },
-  {
-    "src": "ext-angular.jpg",
-    "alt": "Angular contemporary elevation against the open desert"
-  },
-  {
-    "src": "bath-vanity-stone.jpg",
-    "alt": "Vanity in stone tile with a timber base"
-  },
-  {
-    "src": "patio-fireplace.jpg",
-    "alt": "Outdoor fireplace and seating on a paved terrace"
-  },
-  {
-    "src": "living-view-column.jpg",
-    "alt": "Great room with a stone column and a full-height desert view"
-  },
-  {
-    "src": "ext-oldworld-arches.jpg",
-    "alt": "Stone arches and deep-set windows on an old-world elevation"
-  },
-  {
-    "src": "kitchen-wood-island.jpg",
-    "alt": "Kitchen with a timber island and tiled backsplash"
-  },
-  {
-    "src": "pool-spa-view.jpg",
-    "alt": "Raised spa spilling into the pool above the desert"
-  },
-  {
-    "src": "hall-gallery.jpg",
-    "alt": "Gallery hall with seating and a timber ceiling"
-  },
-  {
-    "src": "ext-dusk-cactus.jpg",
-    "alt": "Lit desert home at dusk above a cactus garden"
+    "src": "bath-clawfoot.jpg",
+    "alt": "Clawfoot tub against hand-painted tile"
   },
   {
     "src": "bath-double-vanity.jpg",
     "alt": "Double vanity and walk-in shower in stone tile"
   },
   {
+    "src": "bath-master-tub.jpg",
+    "alt": "Master bath with a soaking tub and twin vanities"
+  },
+  {
+    "src": "bath-mirror-tile.jpg",
+    "alt": "Bath vanity with a stone-tiled surround"
+  },
+  {
+    "src": "bath-oldworld-carved.jpg",
+    "alt": "Old-world vanity beside a carved timber door"
+  },
+  {
+    "src": "bath-tub-tile-wall.jpg",
+    "alt": "Soaking tub against a tiled wall with twin vanities"
+  },
+  {
+    "src": "bath-tub-view.jpg",
+    "alt": "Soaking tub set into a window wall"
+  },
+  {
+    "src": "bath-vanity-bronze.jpg",
+    "alt": "Bronze tap and stone basin beneath a lit mirror"
+  },
+  {
+    "src": "bath-vanity-mirror.jpg",
+    "alt": "Vanity with a framed mirror and sconces"
+  },
+  {
+    "src": "bath-vanity-orchid.jpg",
+    "alt": "Vanity with an orchid beneath a bronze mirror"
+  },
+  {
+    "src": "bath-vanity-plant.jpg",
+    "alt": "Stone vanity with a bronze tap and planting"
+  },
+  {
+    "src": "bath-vanity-sconces.jpg",
+    "alt": "Stone vanity between paired sconces"
+  },
+  {
+    "src": "bath-vanity-stone.jpg",
+    "alt": "Vanity in stone tile with a timber base"
+  },
+  {
+    "src": "bath-window-tile.jpg",
+    "alt": "Bath window set into mosaic tile"
+  },
+  {
+    "src": "bedroom-timber-ceiling.jpg",
+    "alt": "Bedroom beneath a timber-beamed ceiling"
+  },
+  {
+    "src": "courtyard-chairs.jpg",
+    "alt": "Entry courtyard with seating and planted pots"
+  },
+  {
     "src": "courtyard-fire.jpg",
     "alt": "Courtyard fireplace and seating at dusk"
   },
   {
-    "src": "dining-stone-hall.jpg",
-    "alt": "Stone-walled dining hall with a chandelier"
+    "src": "detail-counter.jpg",
+    "alt": "Hand-worked plaster counter edge"
   },
   {
-    "src": "ext-tower.jpg",
-    "alt": "Tower element rising above the roofline"
-  },
-  {
-    "src": "kitchen-white-island.jpg",
-    "alt": "Kitchen with a stone island under a domed ceiling"
-  },
-  {
-    "src": "pool-lawn-steps.jpg",
-    "alt": "Cast stepping stones crossing a lawn toward the pool"
-  },
-  {
-    "src": "entry-doors-lit.jpg",
-    "alt": "Entry doors lit from within at dusk"
-  },
-  {
-    "src": "ext-stone-glass.jpg",
-    "alt": "Stone pier meeting a full-height glass wall"
-  },
-  {
-    "src": "living-oldworld-fire.jpg",
-    "alt": "Old-world living room with a plastered fireplace"
-  },
-  {
-    "src": "patio-firepit.jpg",
-    "alt": "Fire pit and chairs on a terrace above the desert"
+    "src": "detail-niche.jpg",
+    "alt": "Lit niche above a timber cabinet"
   },
   {
     "src": "detail-tile.jpg",
     "alt": "Carved tile and plaster detail"
   },
   {
-    "src": "ext-oldworld-turret.jpg",
-    "alt": "Stone turret and tiled roof against a clear sky"
+    "src": "dining-chandelier.jpg",
+    "alt": "Dining room beneath a wrought-iron chandelier"
   },
   {
-    "src": "bath-clawfoot.jpg",
-    "alt": "Clawfoot tub against hand-painted tile"
+    "src": "dining-kitchen-open.jpg",
+    "alt": "Dining table open to the kitchen beyond"
   },
   {
-    "src": "pool-infinity-sunset.jpg",
-    "alt": "Infinity pool and fire feature against a desert sunset"
+    "src": "dining-open-glass.jpg",
+    "alt": "Dining room opening to the patio through full-height glass"
   },
   {
-    "src": "hall-niche.jpg",
-    "alt": "Stone-walled hall with a lit niche"
+    "src": "dining-patio-open.jpg",
+    "alt": "Dining room opening onto the covered patio"
   },
   {
-    "src": "ext-ranch-dusk.jpg",
-    "alt": "Ranch elevation glowing at dusk"
+    "src": "dining-stone-hall.jpg",
+    "alt": "Stone-walled dining hall with a chandelier"
   },
   {
-    "src": "kitchen-oldworld.jpg",
-    "alt": "Old-world kitchen in carved timber"
+    "src": "entry-carved-city.jpg",
+    "alt": "Carved timber doors opening to the city lights"
   },
   {
-    "src": "pool-lawn-dusk.jpg",
-    "alt": "Pool and lawn glowing against a pink evening sky"
+    "src": "entry-dining-stone.jpg",
+    "alt": "Entry opening onto a dining area beside a stone wall"
+  },
+  {
+    "src": "entry-doors-lit.jpg",
+    "alt": "Entry doors lit from within at dusk"
+  },
+  {
+    "src": "entry-glass-courtyard.jpg",
+    "alt": "Glazed entry doors open to the courtyard"
   },
   {
     "src": "entry-stone-arch.jpg",
     "alt": "Arched entry doors set into a stone surround"
   },
   {
+    "src": "entry-timber-door.jpg",
+    "alt": "Timber entry door beneath a lantern"
+  },
+  {
+    "src": "ext-angular.jpg",
+    "alt": "Angular contemporary elevation against the open desert"
+  },
+  {
     "src": "ext-arched-window.jpg",
     "alt": "Arched window with ironwork on a stone tower"
   },
   {
+    "src": "ext-brick-planter.jpg",
+    "alt": "Brick and stucco elevation with a planted courtyard wall"
+  },
+  {
+    "src": "ext-cactus-drive.jpg",
+    "alt": "Stucco elevation above a cactus and boulder garden"
+  },
+  {
+    "src": "ext-cactus-pool.jpg",
+    "alt": "Curved home with a saguaro and the pool below"
+  },
+  {
+    "src": "ext-contemporary-wide.jpg",
+    "alt": "Low contemporary desert home with saguaro and mountains behind"
+  },
+  {
+    "src": "ext-dusk-cactus.jpg",
+    "alt": "Lit desert home at dusk above a cactus garden"
+  },
+  {
+    "src": "ext-dusk-saguaro.jpg",
+    "alt": "Curved contemporary home glowing at dusk behind a saguaro"
+  },
+  {
+    "src": "ext-mesquite.jpg",
+    "alt": "Contemporary elevation framed by a mesquite"
+  },
+  {
+    "src": "ext-oldworld-arches.jpg",
+    "alt": "Stone arches and deep-set windows on an old-world elevation"
+  },
+  {
+    "src": "ext-oldworld-colonnade.jpg",
+    "alt": "Carved stone colonnade looking out to the desert"
+  },
+  {
+    "src": "ext-oldworld-courtyard.jpg",
+    "alt": "Old-world courtyard wall and planted terrace"
+  },
+  {
+    "src": "ext-oldworld-drive.jpg",
+    "alt": "Old-world estate and circular drive in the desert"
+  },
+  {
+    "src": "ext-oldworld-estate.jpg",
+    "alt": "Old-world estate at sunset beneath a rock outcrop"
+  },
+  {
+    "src": "ext-oldworld-loggia.jpg",
+    "alt": "Loggia with turned columns above the valley"
+  },
+  {
+    "src": "ext-oldworld-turret.jpg",
+    "alt": "Stone turret and tiled roof against a clear sky"
+  },
+  {
+    "src": "ext-oldworld-window.jpg",
+    "alt": "Timber window framing a desert sunset"
+  },
+  {
+    "src": "ext-passage.jpg",
+    "alt": "Shaded passage between stone and stucco walls"
+  },
+  {
+    "src": "ext-path-dusk.jpg",
+    "alt": "Lit walkway curving past agave at dusk"
+  },
+  {
+    "src": "ext-pergola.jpg",
+    "alt": "Timber pergola casting shadow across a stucco wall"
+  },
+  {
+    "src": "ext-ranch-dusk.jpg",
+    "alt": "Ranch elevation glowing at dusk"
+  },
+  {
+    "src": "ext-ranch.jpg",
+    "alt": "Low ranch elevation with a deep covered porch"
+  },
+  {
+    "src": "ext-stone-column.jpg",
+    "alt": "Stone column and timber ceiling on the entry porch"
+  },
+  {
+    "src": "ext-stone-curve.jpg",
+    "alt": "Stacked-stone piers and a curved stucco wall at the entrance"
+  },
+  {
+    "src": "ext-stone-glass.jpg",
+    "alt": "Stone pier meeting a full-height glass wall"
+  },
+  {
+    "src": "ext-stone-wall-dusk.jpg",
+    "alt": "Stone wall and lit windows at twilight"
+  },
+  {
+    "src": "ext-stucco-door.jpg",
+    "alt": "Dark timber door set into a stucco wall"
+  },
+  {
+    "src": "ext-tower.jpg",
+    "alt": "Tower element rising above the roofline"
+  },
+  {
+    "src": "ext-water-feature.jpg",
+    "alt": "Water feature and ramada across the rear elevation"
+  },
+  {
+    "src": "ext-window-planting.jpg",
+    "alt": "Deep-set window above a planted courtyard"
+  },
+  {
+    "src": "ext-yucca.jpg",
+    "alt": "Desert home behind a mature yucca"
+  },
+  {
+    "src": "hall-art.jpg",
+    "alt": "Long hall with art and a glazed courtyard wall"
+  },
+  {
+    "src": "hall-courtyard-glass.jpg",
+    "alt": "Hall running alongside a glazed courtyard wall"
+  },
+  {
+    "src": "hall-gallery.jpg",
+    "alt": "Gallery hall with seating and a timber ceiling"
+  },
+  {
+    "src": "hall-niche.jpg",
+    "alt": "Stone-walled hall with a lit niche"
+  },
+  {
+    "src": "hall-red-art.jpg",
+    "alt": "Hall hung with red canvases opening to the courtyard"
+  },
+  {
+    "src": "kitchen-backsplash-detail.jpg",
+    "alt": "Mosaic backsplash and timber cabinetry detail"
+  },
+  {
+    "src": "kitchen-mountain-view.jpg",
+    "alt": "Kitchen island beneath a full-width window onto the mountains"
+  },
+  {
+    "src": "kitchen-oldworld.jpg",
+    "alt": "Old-world kitchen in carved timber"
+  },
+  {
+    "src": "kitchen-range.jpg",
+    "alt": "Range and mosaic backsplash detail"
+  },
+  {
+    "src": "kitchen-white-island.jpg",
+    "alt": "Kitchen with a stone island under a domed ceiling"
+  },
+  {
+    "src": "kitchen-wood-island.jpg",
+    "alt": "Kitchen with a timber island and tiled backsplash"
+  },
+  {
+    "src": "living-art-wall.jpg",
+    "alt": "Living room with art and a wall of glass"
+  },
+  {
+    "src": "living-curved-glass.jpg",
+    "alt": "Curved glass wall opening a sitting room to the desert"
+  },
+  {
+    "src": "living-fire-art.jpg",
+    "alt": "Living room with a fireplace and a woven desert rug"
+  },
+  {
+    "src": "living-glass-wall-open.jpg",
+    "alt": "Pocketing glass wall opening the great room to the terrace"
+  },
+  {
+    "src": "living-great-room.jpg",
+    "alt": "Great room with deep sofas and a timber ceiling"
+  },
+  {
+    "src": "living-hearth-tv.jpg",
+    "alt": "Living room with a stone hearth and mountain outlook"
+  },
+  {
     "src": "living-modern-fire.jpg",
     "alt": "Linear gas fireplace set into a tiled wall"
+  },
+  {
+    "src": "living-oldworld-fire.jpg",
+    "alt": "Old-world living room with a plastered fireplace"
+  },
+  {
+    "src": "living-stone-hearth.jpg",
+    "alt": "Great room with a stone hearth wall and desert outlook"
+  },
+  {
+    "src": "living-view-column.jpg",
+    "alt": "Great room with a stone column and a full-height desert view"
+  },
+  {
+    "src": "living-woven-chair.jpg",
+    "alt": "Sitting area with a woven chair and a lit sculpture"
+  },
+  {
+    "src": "patio-covered-seating.jpg",
+    "alt": "Covered patio seating looking across the desert"
+  },
+  {
+    "src": "patio-covered.jpg",
+    "alt": "Covered patio running the length of the house"
+  },
+  {
+    "src": "patio-dusk-seating.jpg",
+    "alt": "Covered terrace and fireplace lit at dusk"
+  },
+  {
+    "src": "patio-firepit.jpg",
+    "alt": "Fire pit and chairs on a terrace above the desert"
+  },
+  {
+    "src": "patio-fireplace.jpg",
+    "alt": "Outdoor fireplace and seating on a paved terrace"
+  },
+  {
+    "src": "patio-ramada-timber.jpg",
+    "alt": "Timber ramada and planted terrace"
+  },
+  {
+    "src": "patio-seating.jpg",
+    "alt": "Covered patio with seating and a desert outlook"
+  },
+  {
+    "src": "pool-evening-terrace.jpg",
+    "alt": "Evening pool terrace with a mountain view"
+  },
+  {
+    "src": "pool-fire-bowl.jpg",
+    "alt": "Fire bowl burning at the edge of the pool terrace"
+  },
+  {
+    "src": "pool-glow-dusk.jpg",
+    "alt": "Lit interior reflected in the pool at dusk"
+  },
+  {
+    "src": "pool-infinity-sunset.jpg",
+    "alt": "Infinity pool and fire feature against a desert sunset"
+  },
+  {
+    "src": "pool-lawn-dusk.jpg",
+    "alt": "Pool and lawn glowing against a pink evening sky"
+  },
+  {
+    "src": "pool-lawn-steps.jpg",
+    "alt": "Cast stepping stones crossing a lawn toward the pool"
+  },
+  {
+    "src": "pool-mountain-dusk.jpg",
+    "alt": "Pool terrace and lit great room looking out to the mountains"
+  },
+  {
+    "src": "pool-ramada-dusk.jpg",
+    "alt": "Covered ramada and pool at dusk"
+  },
+  {
+    "src": "pool-ramada-spa.jpg",
+    "alt": "Timber ramada and spa with the mountains beyond"
+  },
+  {
+    "src": "pool-spa-dusk.jpg",
+    "alt": "Pool and raised spa glowing under a covered patio at dusk"
+  },
+  {
+    "src": "pool-spa-view.jpg",
+    "alt": "Raised spa spilling into the pool above the desert"
+  },
+  {
+    "src": "study-desert-view.jpg",
+    "alt": "Study looking out to the desert through a corner window"
   }
 ]
