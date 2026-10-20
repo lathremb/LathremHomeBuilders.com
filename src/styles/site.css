@@ -252,10 +252,7 @@ p:last-child { margin-bottom: 0; }
 .hero__media img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: center 35%;
-  transform: scale(1.06);
-  animation: heroDrift 22s var(--ease) forwards;
 }
-@keyframes heroDrift { to { transform: scale(1); } }
 .hero__scrim {
   position: absolute; inset: 0;
   background:
@@ -322,7 +319,16 @@ p:last-child { margin-bottom: 0; }
 }
 .stat { padding: 38px 22px 4px; text-align: center; border-right: 1px solid var(--line); }
 .stat:last-child { border-right: 0; }
-.stat__n { font-family: var(--serif); font-size: clamp(30px, 3.4vw, 44px); line-height: 1; font-weight: 300; }
+/* Cormorant Garamond defaults to oldstyle figures, where the 1 sits at x-height
+   with a full foot serif and reads as a Roman numeral I. Force lining figures. */
+.stat__n {
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1;
+  font-weight: 300;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1, "onum" 0;
+}
 .stat__l { margin-top: 12px; font-size: 10.5px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); line-height: 1.6; }
 .stat__src { margin-top: 8px; font-size: 10px; letter-spacing: .06em; color: #b0a89b; }
 
@@ -344,6 +350,7 @@ p:last-child { margin-bottom: 0; }
    PORTFOLIO GRID
    ========================================================= */
 .grid-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: clamp(34px, 4.5vw, 58px); }
+.grid-foot { margin-top: clamp(28px, 3.4vw, 48px); text-align: center; }
 
 .grid {
   display: grid;
