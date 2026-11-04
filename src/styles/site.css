@@ -376,8 +376,11 @@ p:last-child { margin-bottom: 0; }
   opacity: .82;
   transition: opacity .6s var(--ease);
 }
-.tile:hover::after { opacity: 1; }
-.tile:hover img { transform: scale(1.05); }
+/* Hover motion only on tiles that are actually links. The landing-page grid
+   is static, and animating a non-interactive tile implies a click that does
+   nothing; the portfolio tiles are anchors and keep the effect. */
+a.tile:hover::after { opacity: 1; }
+a.tile:hover img { transform: scale(1.05); }
 
 .tile__cap {
   position: absolute; z-index: 2; left: 0; right: 0; bottom: 0;
@@ -386,7 +389,7 @@ p:last-child { margin-bottom: 0; }
   transform: translateY(6px);
   transition: transform .55s var(--ease);
 }
-.tile:hover .tile__cap { transform: translateY(0); }
+a.tile:hover .tile__cap { transform: translateY(0); }
 .tile__t { display: block; font-family: var(--serif); font-size: clamp(18px, 1.6vw, 24px); font-weight: 400; line-height: 1.2; }
 .tile__s { display: block; margin-top: 7px; font-size: 10px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: rgba(255,255,255,.8); }
 
