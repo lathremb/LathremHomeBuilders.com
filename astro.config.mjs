@@ -2,7 +2,11 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://lathrem-home-builders-com.vercel.app',
+  /* The real domain. Every <link rel="canonical"> is derived from this in
+     Base.astro, so this is the only place it should ever be written.
+     Never point it at a deployment preview host: that tells Google the
+     preview address is the real site, which is what went wrong before. */
+  site: 'https://lathremhomebuilders.com',
 
   // Fully static. The contact form is a Vercel Function in /api, which
   // Vercel serves alongside the build without needing an adapter.

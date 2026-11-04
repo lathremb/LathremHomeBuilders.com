@@ -1,4 +1,17 @@
 ---
+import { SITE_URL } from '../data/site.js';
+import { getImage } from 'astro:assets';
+import heroSource from '../assets/img/living-stone-hearth.jpg';
+
+/* Structured data needs one absolute URL for this page's lead photograph.
+   The file is processed by astro:assets, so ask the pipeline where it
+   actually landed rather than guessing a path that will 404. */
+const primaryImage = await getImage({
+  src: heroSource,
+  format: 'webp',
+  width: Math.min(heroSource.width, 1200),
+  quality: 82,
+});
 import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 
@@ -7,11 +20,11 @@ const schema = {
   "@graph": [
     {
       "@type": "HomeAndConstructionBusiness",
-      "@id": "https://lathrem-home-builders-com.vercel.app/#business",
+      "@id": `${SITE_URL}/#business`,
       "name": "Lathrem Homebuilders, LLC",
-      "url": "https://lathrem-home-builders-com.vercel.app/",
-      "logo": "https://lathrem-home-builders-com.vercel.app/assets/img/logo-c.png",
-      "image": "https://lathrem-home-builders-com.vercel.app/assets/img/hero3-2400.webp",
+      "url": `${SITE_URL}/`,
+      "logo": `${SITE_URL}/assets/img/logo-c.png`,
+      "image": `${SITE_URL}/assets/img/hero3-2400.webp`,
       "telephone": "+1-520-975-0456",
       "founder": {
         "@type": "Person",
@@ -42,44 +55,44 @@ const schema = {
     },
     {
       "@type": "WebPage",
-      "@id": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-oro-valley.html#webpage",
-      "url": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-oro-valley.html",
+      "@id": `${SITE_URL}/custom-home-builder-oro-valley.html#webpage`,
+      "url": `${SITE_URL}/custom-home-builder-oro-valley.html`,
       "name": "Custom Home Builder in Oro Valley, AZ | Lathrem Homebuilders",
       "description": "Licensed custom home builder in Oro Valley, Arizona. Ground-up residences, remodels and outdoor living on Pusch Ridge and Rancho Vistoso lots.",
       "inLanguage": "en-US",
       "about": {
-        "@id": "https://lathrem-home-builders-com.vercel.app/#business"
+        "@id": `${SITE_URL}/#business`
       },
-      "primaryImageOfPage": "https://lathrem-home-builders-com.vercel.app/assets/img/living-stone-hearth.jpg",
+      "primaryImageOfPage": `${SITE_URL}${primaryImage.src}`,
       "breadcrumb": {
-        "@id": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-oro-valley.html#breadcrumb"
+        "@id": `${SITE_URL}/custom-home-builder-oro-valley.html#breadcrumb`
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-oro-valley.html#breadcrumb",
+      "@id": `${SITE_URL}/custom-home-builder-oro-valley.html#breadcrumb`,
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lathrem-home-builders-com.vercel.app/"
+          "item": `${SITE_URL}/`
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Custom home builder in Oro Valley",
-          "item": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-oro-valley.html"
+          "item": `${SITE_URL}/custom-home-builder-oro-valley.html`
         }
       ]
     },
     {
       "@type": "Service",
-      "@id": "https://lathrem-home-builders-com.vercel.app/custom-home-builder-oro-valley.html#service",
+      "@id": `${SITE_URL}/custom-home-builder-oro-valley.html#service`,
       "name": "Custom home building in Oro Valley, Arizona",
       "serviceType": "Custom home construction, remodels, additions and outdoor living",
       "provider": {
-        "@id": "https://lathrem-home-builders-com.vercel.app/#business"
+        "@id": `${SITE_URL}/#business`
       },
       "areaServed": {
         "@type": "City",

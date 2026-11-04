@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://lathrem-home-builders-com.vercel.app/sitemap.xml
+Sitemap: https://lathremhomebuilders.com/sitemap.xml

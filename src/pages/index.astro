@@ -1,4 +1,5 @@
 ---
+import { SITE_URL } from '../data/site.js';
 import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import Cta from '../components/Cta.astro';
@@ -6,13 +7,13 @@ import Cta from '../components/Cta.astro';
 const schema = {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
-  "@id": "https://lathrem-home-builders-com.vercel.app/#business",
+  "@id": `${SITE_URL}/#business`,
   "name": "Lathrem Homebuilders, LLC",
   "alternateName": "Lathrem Homebuilders",
   "description": "Licensed Arizona general contractor building custom homes, remodels, additions and outdoor living throughout Tucson and Pima County.",
-  "url": "https://lathrem-home-builders-com.vercel.app/",
-  "logo": "https://lathrem-home-builders-com.vercel.app/assets/img/logo-c.png",
-  "image": "https://lathrem-home-builders-com.vercel.app/assets/img/hero3-2400.webp",
+  "url": `${SITE_URL}/`,
+  "logo": `${SITE_URL}/assets/img/logo-c.png`,
+  "image": `${SITE_URL}/assets/img/hero3-2400.webp`,
   "telephone": "+1-520-975-0456",
   "founder": {
     "@type": "Person",

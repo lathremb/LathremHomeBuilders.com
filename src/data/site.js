@@ -2,6 +2,11 @@
    Previously the phone number lived in 13 places across 8 files; changing it
    meant a find-and-replace and hoping nothing was missed. */
 
+/* Canonical origin, no trailing slash. Structured data builds absolute URLs
+   from this; astro.config.mjs holds the same value for canonical tags.
+   Change both together if the domain ever moves. */
+export const SITE_URL = 'https://lathremhomebuilders.com';
+
 export const site = {
   name: 'Lathrem Homebuilders',
   legalName: 'Lathrem Homebuilders, LLC',
