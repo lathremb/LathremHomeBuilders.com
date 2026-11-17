@@ -11,6 +11,17 @@
       ],
       "destination": "https://lathremhomebuilders.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml"
     }
   ],
   "headers": [

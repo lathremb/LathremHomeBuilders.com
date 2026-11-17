@@ -6,8 +6,8 @@ import '../styles/site.css';
 interface Props {
   title: string;
   description: string;
-  /** Path for <link rel="canonical">, e.g. "/about.html". "/" for home. */
-  canonical: string;
+  /** Optional override. Normally the canonical is derived from the route. */
+  canonical?: string;
   /** Transparent header, for the landing page hero only. */
   transparentHeader?: boolean;
   /** JSON-LD object, serialised into a script tag. */
@@ -22,7 +22,14 @@ const {
   schema = null,
 } = Astro.props;
 
-const canonicalUrl = new URL(canonical, Astro.site).href;
+/* Self-referencing canonical, derived from the route rather than passed in,
+   so a page cannot declare the wrong one. Astro.url.pathname already carries
+   the .html because build.format is 'file', and it never carries a query
+   string or hash in a static build. The homepage is the one exception: it is
+   emitted as index.html but is canonically the bare origin, which is what is
+   indexed and what the sitemap lists. */
+const routePath = Astro.url.pathname.replace(/index\.html$/, '');
+const canonicalUrl = new URL(canonical ?? routePath, Astro.site).href;
 ---
 
 <!DOCTYPE html>
@@ -49,7 +56,7 @@ const canonicalUrl = new URL(canonical, Astro.site).href;
   )}
 </head>
 <body>
-  <Header transparent={transparentHeader} current={canonical} />
+  <Header transparent={transparentHeader} current={canonical ?? routePath} />
 
   <slot />
 

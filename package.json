@@ -10,6 +10,7 @@
     "test": "node test/contact.test.js && node test/contact-supabase.test.js"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.5",
     "astro": "^5.14.1",
     "sharp": "^0.34.4"
   },

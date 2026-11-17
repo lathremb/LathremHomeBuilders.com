@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+
+# The contact endpoint is not a page and has nothing to crawl.
 Disallow: /api/
 
 Sitemap: https://lathremhomebuilders.com/sitemap.xml
